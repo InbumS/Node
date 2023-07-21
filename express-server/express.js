@@ -9,5 +9,5 @@ app.get("/",(req,res)=>{
 })
 
 app.listen(port, ()=>{
-    console.log("START SERVER: use ${port");
+    console.log("START SERVER: use ${port}");
 })
