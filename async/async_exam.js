@@ -5,7 +5,7 @@ function waitOneSecond(msg){
 }
 
 async function CountOneToTen(){
-    // ...을주면 10면을 돌며 리스트에 숫자를 채운다
+    // ...을주면 값만 추출;  
     for(let x of [...Array(10).keys()]){
         let result= await waitOneSecond(`${x+1}초 대기 중..`);
         console.log(result);
