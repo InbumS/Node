@@ -1,0 +1,81 @@
+<h1>{{title}}</h1>
+<h2 class="text-xl">제목입니다</h2>
+<div>
+    작성자:<b>작성자 이름</b>
+</div>
+<div>
+     조회수: 9999 | 작성일시 : 2023-07-24 00:00:00
+     <button onclick="modifyPost()">수정</button>
+     <button onclick="deletePost()">삭제</button>
+</div>
+<!-- div = 가상의 레이아웃 -->
+<div>
+    <pre>본문입니다.</pre>
+</div>
+<section>
+    <div>
+        <h3>3개의 댓글이 있습니다.</h3>
+    </div>
+    <!-- write-comment로 post 전달 -->
+    <form method="post" action="/write-comment">
+    <div>
+        <div>
+            <input type="text" name="name" placeholder="이름" />
+            <input type="password" name="password" placeholder="비밀번호" /> 
+        </div>
+        <div>
+            <textarea cols="40" rows="3" name="comment" placeholder="댓글을 입력해주세요"></textarea>
+            <br /><br /><button>댓글 쓰기</button>
+        </div>
+    </div>
+    </form>
+</section>
+
+<section>
+    <div>
+        <div>
+            작성자: <b>댓글 작성자</b>
+        </div>
+        <div>
+            작성일시: 2023.07.24 00:00:00
+            <!-- deleteComment 는 함수 인듯? -->
+            <button onclick="deleteComment('1')">삭제   </button>
+        </div>
+    </div>
+    <div>
+        <pre>{{comment}}</pre>
+    </div>
+</section>
+
+
+<footer>
+    <div>
+        <a href="/">목록으로</a>
+    </div>
+</footer>
+
+<script>
+    async function deleteComment(idx){
+        // prompt도 띄울 수 있다
+        const password = prompt("삭제하려면 패스워드를 입력해주세요 ");
+        if (! password){
+            return;
+        }
+        //fetch API를 통해 삭제 연산
+        const result = await fetch("/delete-comment",{
+            ...deleteOption,
+            // 객체를 json문자열로 바꾼다 {id: post._id, idx, password}
+            body: JSON.stringify({id: "{{post._id}}", idx, password}) 
+        });
+        //삭제 확인 로직
+        const data = await result.json();
+        if (!data.isSuccess){
+            alert("삭제에 실패했습니다. 패스워드를 확인해주세요.");
+            return;
+        }
+
+        alert("Delete success!");
+        // Document에 속한 리소스를 리로드한다
+        document.location.reload();
+    }
+</script>
