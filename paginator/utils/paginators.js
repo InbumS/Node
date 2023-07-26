@@ -16,8 +16,8 @@ module.exports = ({totalCount, page, perPage = 10})=>{
     const startPage = quotient * PAGE_LIST_SIZE+ 1;
     // 끝페이지 (삭제를 통해 페이지가 삭제가 되었는지 삼중 연산자를 통해 구한다)
     const endPage = startPage + PAGE_LIST_SIZE-1 < totalpage ? startPage + PAGE_LIST_SIZE-1: totalpage;
-    const isFirstPage = page===1;
-    const isLastPage = page ===totalpage;
+    const isFirstPage = page ===1;
+    const isLastPage = page === totalpage;
     const hasPrev = page>1;
     const hasNext = page<totalpage;
     // 객체 생성
