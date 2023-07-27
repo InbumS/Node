@@ -10,12 +10,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@nestjs/common": "^10.1.2",
+    "@nestjs/core": "^10.1.2",
+    "@nestjs/platform-express": "^10.1.2",
     "axios": "^1.4.0",
     "express": "^4.18.2",
     "loadsh": "^0.0.4",
     "mongodb": "^5.7.0",
     "moongose": "^1.0.0",
     "nodemon": "^2.0.20",
-    "prettier": "^3.0.0"
+    "prettier": "^3.0.0",
+    "reflect-metadata": "^0.1.13",
+    "typescript": "^5.1.6"
   }
 }
