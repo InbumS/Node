@@ -39,3 +39,31 @@ function fetchUser() {
 }
 var _a = fetchUser(), x = _a[0], y = _a[1];
 console.log(x, y);
+// 타입을 바꿔가면 넣어야 하는 코드일시..
+var anyValue = 10;
+// 여러 라이브러리에서 타입이 지정 안될 시 any로 접근 가능
+anyValue = "hello";
+anyValue = true;
+function prints(value) {
+    console.log(value);
+}
+function InfiniteLoop() {
+    while (true) { }
+}
+var anyValues = 10;
+anyValues = "Goodday";
+anyValues = false;
+// 유니온 타입들의 형을 한정 지을 때
+var str = typeof anyValues === "string";
+var starbuckGrandeSizeCup = {
+    brandName: "스타벅스",
+    size: "grande"
+};
+function echo(message) {
+    console.log(message);
+    return message;
+}
+var FuncEcho = echo;
+// 타입지정
+var funcEcho2 = echo;
+var funcEcho3 = echo;
