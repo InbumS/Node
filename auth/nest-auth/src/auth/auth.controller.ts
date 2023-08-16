@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import {
   Body,
   Controller,
@@ -9,7 +10,12 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from 'src/user/user.dto';
-import { AuthenticatedGuard, LocalAuthGuard, LoginGuard } from './auth.guard';
+import {
+  AuthenticatedGuard,
+  LocalAuthGuard,
+  LoginGuard,
+  GoogleAuthGuard,
+} from './auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -64,5 +70,16 @@ export class AuthController {
   @Get('test-guard2')
   testGuardWithSession(@Request() req) {
     return req.user;
+  }
+
+  @Get('to-google')
+  @UseGuards(GoogleAuthGuard)
+  async googleAuth(@Request() req) {}
+
+  @Get('google')
+  @UseGuards(GoogleAuthGuard)
+  async googleAuthRedirect(@Request() req, @Response() res): Promise<any> {
+    const { user } = req;
+    return res.send(user);
   }
 }
