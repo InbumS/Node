@@ -10,7 +10,7 @@ export class User {
   @Column({ unique: true })
   email: string;
 
-  @Column({nullable: true})
+  @Column({ nullable: true })
   password: string;
 
   @Column()
@@ -19,6 +19,6 @@ export class User {
   @Column({ default: true })
   createdDt: Date = new Date();
 
-  @Column({nullable: true})
+  @Column({ nullable: true })
   proverId: string;
 }
